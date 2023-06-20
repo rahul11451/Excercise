@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\viewController;
 use App\Models\Personal_info;
 
 /*
@@ -26,7 +27,9 @@ use App\Models\Personal_info;
 
 Route::get('/welcome', [RegistrationController::class, 'index']);
 Route::post('/welcome', [RegistrationController::class, 'postData']);
+Route::get('/viewtable', [RegistrationController::class, 'view']);
+Route::get('/viewtable/{id}', [RegistrationController::class, 'delete'])->name('customer.delete');
+Route::get('/welcome/{id}', [RegistrationController::class, 'edit'])->name('customer.edit');
 Route::get('/response', function () {
     $personalInfo = Personal_info::all();
-    echo '<br>Nensi<br>File: '. __FILE__.'<br>Line: '.__LINE__.'<br><pre>';print_r($personalInfo);echo '</pre>'; die();
 });
